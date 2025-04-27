@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Book Library</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-4">
+    <h1>Book Library</h1>
+    <a href="/view/books/new" class="btn btn-primary mb-3">Add New Book</a>
+
+    <!-- Search Form -->
+    <form th:action="@{/view/books/search}" method="get" class="mb-4">
+        <div class="input-group">
+            <input type="text" name="keyword" class="form-control" placeholder="Search by title or author...">
+            <button type="submit" class="btn btn-primary">Search</button>
+            <a th:href="@{/view/books}" class="btn btn-secondary">Clear</a>
+        </div>
+    </form>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book : ${books}">
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.price}"></td>
+            <td>
+                <a th:href="@{/view/books/{id}(id=${book.id})}" class="btn btn-info btn-sm">View</a>
+                <a th:href="@{/view/books/edit/{id}(id=${book.id})}" class="btn btn-warning btn-sm">Edit</a>
+                <a th:href="@{/view/books/delete/{id}(id=${book.id})}" class="btn btn-danger btn-sm"
+                   onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
