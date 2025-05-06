@@ -53,10 +53,10 @@ Le projet est divisé en deux parties principales :
 ```java
 public class Book {
     private Long id;
-    @NotBlank private String title;    // Titre du livre (requis)
-    @NotBlank private String author;   // Auteur (requis)
-    @NotBlank private String isbn;     // ISBN (requis)
-    @NotNull @Positive private Double price; // Prix (positif, requis)
+    @NotBlank private String title;    
+    @NotBlank private String author;   
+    @NotBlank private String isbn;     
+    @NotNull @Positive private Double price; 
 }
 ```
 
